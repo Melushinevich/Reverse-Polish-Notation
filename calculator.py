@@ -37,7 +37,8 @@ class Calculator:
             self.tokens.append("~")
             return
 
-        while self.tokens and self.tokens[-1] != "(" and self.tokens[-1] != "~" and self.operation[symbol] <= self.operation[self.tokens[-1]]:
+        while (self.tokens and self.tokens[-1] != "(" and self.tokens[-1] != "~"
+               and self.operation[symbol] <= self.operation[self.tokens[-1]]):
             self.rpn.append(self.tokens.pop())
 
         self.tokens.append(symbol)
@@ -61,11 +62,13 @@ class Calculator:
                     symbol = ""
 
                 if char == "-" and self.unary_minus:
-                    if i + 1 < len(self.expression) and self.expression[i + 1] == "(":
+                    if (i + 1 < len(self.expression)
+                            and self.expression[i + 1] == "("):
                         self.tokens.append("~")
                         i += 1
                         continue
-                    elif i + 1 < len(self.expression) and self.expression[i + 1] not in self.operation.keys():
+                    elif (i + 1 < len(self.expression)
+                          and self.expression[i + 1] not in self.operation.keys()):
                         symbol = "-"
                         i += 1
                         continue
@@ -98,13 +101,15 @@ class Calculator:
             if token in self.operation or token == "~":
                 if token == "~":
                     if len(stack) < 1:
-                        raise ValueError("Недостаточно операндов для унарного минуса")
+                        raise ValueError("Недостаточно операндов для "
+                                         "унарного минуса")
                     a = stack.pop()
                     result = -a
                     stack.append(result)
                 else:
                     if len(stack) < 2:
-                        raise ValueError(f"Недостаточно операндов для операции {token}")
+                        raise ValueError(f"Недостаточно операндов для "
+                                         f"операции {token}")
                     b = stack.pop()
                     a = stack.pop()
 
@@ -130,15 +135,18 @@ class Calculator:
                         value = float(token)
                     except ValueError:
                         if token.isalpha():
-                            raise ValueError(f"Неизвестная переменная '{token}'. "
-                                             f"Укажите значение в параметре variables")
+                            raise ValueError(f"Неизвестная "
+                                             f"переменная '{token}'. "
+                                             f"Укажите значение "
+                                             f"в параметре variables")
                         else:
                             raise ValueError(f"Неверный операнд '{token}'")
 
                 stack.append(value)
 
         if len(stack) != 1:
-            raise ValueError(f"Ошибка вычисления: в стеке осталось {len(stack)} элементов")
+            raise ValueError(f"Ошибка вычисления: в стеке "
+                             f"осталось {len(stack)} элементов")
 
         self.result = stack[0]
         return self.result
