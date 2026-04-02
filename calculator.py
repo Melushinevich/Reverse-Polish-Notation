@@ -37,7 +37,8 @@ class Calculator:
             self.tokens.append("~")
             return
 
-        while (self.tokens and self.tokens[-1] != "(" and self.tokens[-1] != "~"
+        while (self.tokens and self.tokens[-1] != "("
+               and self.tokens[-1] != "~"
                and self.operation[symbol] <= self.operation[self.tokens[-1]]):
             self.rpn.append(self.tokens.pop())
 
@@ -68,7 +69,8 @@ class Calculator:
                         i += 1
                         continue
                     elif (i + 1 < len(self.expression)
-                          and self.expression[i + 1] not in self.operation.keys()):
+                          and self.expression[i + 1] not
+                          in self.operation.keys()):
                         symbol = "-"
                         i += 1
                         continue
