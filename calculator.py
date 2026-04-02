@@ -98,7 +98,8 @@ class Calculator:
             raise ValueError("Нет выражения для вычисления")
 
         # Вывод обратной польской нотации
-        print("Обратная польская нотация (RPN):")
+        print("Обратная "
+              "польская нотация (RPN):")
         print(" ".join(self.rpn))
         print()
 
@@ -163,4 +164,5 @@ if __name__ == "__main__":
     string = "18+18-2*(-13+6-3/5)-64"
     rpn = Calculator()
     result = rpn.calculate(string)
-    print(f"Результат вычисления: {result}")
+    print(f"Результат "
+          f"вычисления: {result}")
