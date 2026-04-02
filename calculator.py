@@ -164,5 +164,4 @@ if __name__ == "__main__":
     string = "18+18-2*(-13+6-3/5)-64"
     rpn = Calculator()
     result = rpn.calculate(string)
-    print(f"Результат "
-          f"вычисления: {result}")
+    print(result)
