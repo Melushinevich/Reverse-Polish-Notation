@@ -97,6 +97,11 @@ class Calculator:
         if not self.rpn:
             raise ValueError("Нет выражения для вычисления")
 
+        # Вывод обратной польской нотации
+        print("Обратная польская нотация (RPN):")
+        print(" ".join(self.rpn))
+        print()
+
         stack = []
 
         for token in self.rpn:
@@ -157,4 +162,5 @@ class Calculator:
 if __name__ == "__main__":
     string = "18+18-2*(-13+6-3/5)-64"
     rpn = Calculator()
-    print(rpn.calculate(string))
+    result = rpn.calculate(string)
+    print(f"Результат вычисления: {result}")
